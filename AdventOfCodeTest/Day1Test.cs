@@ -10,9 +10,6 @@ namespace AdventOfCodeTest
         [Test]
         public void ShouldCalculate1()
         {
-            var i = 0 % 15;
-
-
             var input = new[] { "R2", "L3" };
             var day1 = new Day1();
 
