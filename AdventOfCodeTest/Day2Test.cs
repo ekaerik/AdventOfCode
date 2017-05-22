@@ -63,7 +63,7 @@ namespace AdventOfCodeTest
 		}
 
 		[TestFixture]
-		public class BackToBasicsTest
+		public class Day2BackToBasicsTest
 		{
 			[Test]
 			public void ShouldUp()
