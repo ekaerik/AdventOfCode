@@ -12,9 +12,4 @@ namespace AdventOfCOde
         {
         }
     }
-    
-    public interface IDay
-    {
-        void Open();
-    }
 }

@@ -7,15 +7,10 @@ using System.Threading.Tasks;
 
 namespace AdventOfCOde
 {
-    public class Day1 : IDay
+
+    public class Day1
     {
-
-        public void Open()
-        {
-
-        }
-
-        public Distance Open(string[] rawDirections)
+        public Distance Calculate(string[] rawDirections)
         {
             var currentLocation = new Coordinate { X = 0, Y = 0 };
             var regex = new Regex(@"([RL])(\d*)");
