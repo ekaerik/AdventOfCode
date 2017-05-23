@@ -31,15 +31,14 @@ namespace AdventOfCOde
 					.ToArray();
 
 				var valid = true;
-				charsToMatch
-					.ForEach((l, i) =>
+				for(var i = 0; i < charsToMatch.Length; i++)
+				{
+					if (charsToMatch[i] != checksum[i])
 					{
-						if (l != checksum[i])
-						{
-							valid = false;
-							return;
-						}
-					});
+						valid = false;
+						break;
+					}
+				}
 
 				result += valid ? sectorId : 0;
 
