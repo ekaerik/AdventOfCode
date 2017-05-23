@@ -7,7 +7,6 @@ namespace AdventOfCOde
 		public int NumberOfTriangles(IEnumerable<int[]> examples)
 		{
 			var validTriangles = 0;
-
 			foreach(var example in examples)
 			{
 				if (example[1] + example[2] > example[0] &&

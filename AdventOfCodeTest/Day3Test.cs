@@ -24,10 +24,18 @@ namespace AdventOfCodeTest
 			result.Should().Be(1);
 		}
 
+
 		[Test]
 		public void ShouldSolve()
 		{
-			var result = new Day3().NumberOfTriangles(new[] {
+			var result = new Day3().NumberOfTriangles(input);
+
+			Console.WriteLine(result);
+
+			result.Should().Be(869);
+		}
+
+		private int[][] input = new[] {
 				new[] {   810,  679,   10 },
 				new[] {   783,  255,  616 },
 				new[] {   545,  626,  626 },
@@ -1627,9 +1635,6 @@ namespace AdventOfCodeTest
 				new[] {   850,  394,  702 },
 				new[] {    68,  744,  665 },
 				new[] {   919,  923,  873 },
-			});
-
-			Console.WriteLine(result);
-		}
+			};
 	}
 }

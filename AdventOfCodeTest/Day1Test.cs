@@ -54,6 +54,8 @@ namespace AdventOfCodeTest
 			var result = day1.Calculate(input);
 
 			Console.WriteLine(result.Blocks);
+
+			result.Blocks.Should().Be(236);
 		}
 	}
 }
