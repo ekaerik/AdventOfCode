@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MoreLinq;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -7,51 +6,57 @@ namespace AdventOfCOde
 {
 	public class Day4
 	{
-		private Regex regex = new Regex(@"(.*?)(\d*?)\[(.*?)\]");
-		
+		private RoomParser roomParser;
+
+		public Day4()
+		{
+			roomParser = new RoomParser();
+		}
+
 		public int SectorIdSumForRealRooms(params string[] rooms)
 		{
 			var result = 0;
 			foreach (var room in rooms)
 			{
-				var matches = regex.Match(room);
-				var encryption = matches.Groups[1].Value;
-				var sectorId = int.Parse(matches.Groups[2].Value);
-				var checksum = matches.Groups[3].Value;
-				
-				var letterGroups = encryption
-					.ToCharArray()
-					.Where(l => l != '-')
-					.GroupBy(l => l)
+				(var encryption, var sectorId, var checksum) = roomParser.Parse(room);
+
+
+				var chars = encryption.ToCharArray().Where(c => c != '-');
+				var orderByOccuranceAndAlphabetIfTied = chars
+					.GroupBy(c => c)
 					.OrderByDescending(g => g.Count())
-					.ThenBy(g => g.Key)
+					.ThenBy(g => g.Key);
+				var charsToMatch = orderByOccuranceAndAlphabetIfTied
+					.Take(5)
+					.Select(x => x.Key)
 					.ToArray();
-				
-				var valid = false;
-				for (var i = 0; i < 5; i++)
-				{
-					if(letterGroups[i].Key != checksum[i])
+
+				var valid = true;
+				charsToMatch
+					.ForEach((l, i) =>
 					{
-						valid = false;
-						break;
-					}
-					valid = true;
-				}
-				result = valid ? result + sectorId : result;
+						if (l != checksum[i])
+						{
+							valid = false;
+							return;
+						}
+					});
+
+				result += valid ? sectorId : 0;
 
 			}
 			return result;
 		}
-	}
 
-	public static class ArrayExtensions
-	{
-		public static T SafeNext<T>(this IEnumerable<T> source, int index)
+		private class RoomParser
 		{
-			if (index + 1 <= source.Count())
-				return source.ElementAt(index + 1);
-			return default(T);
-		}
+			private Regex regex = new Regex(@"(.*?)(\d*?)\[(.*?)\]");
 
+			public (string encryption, int sectorId, string checksum) Parse(string encryptedRooms)
+			{
+				var match = regex.Match(encryptedRooms);
+				return (match.Groups[1].Value, int.Parse(match.Groups[2].Value), match.Groups[3].Value);
+			}
+		}
 	}
 }

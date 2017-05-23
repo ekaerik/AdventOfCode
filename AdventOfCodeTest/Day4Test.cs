@@ -137,6 +137,8 @@ namespace AdventOfCodeTest
 			var result = new Day4().SectorIdSumForRealRooms(input);
 
 			Console.WriteLine(result);
+
+			result.Should().Be(185371);
 		}
 
 		string[] input = new[]
