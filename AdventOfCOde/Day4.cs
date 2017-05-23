@@ -19,8 +19,7 @@ namespace AdventOfCOde
 			foreach (var room in rooms)
 			{
 				(var encryption, var sectorId, var checksum) = roomParser.Parse(room);
-
-
+				
 				var chars = encryption.ToCharArray().Where(c => c != '-');
 				var orderByOccuranceAndAlphabetIfTied = chars
 					.GroupBy(c => c)
