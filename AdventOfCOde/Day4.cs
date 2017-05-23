@@ -9,7 +9,7 @@ namespace AdventOfCOde
 	{
 		private Regex regex = new Regex(@"(.*?)(\d*?)\[(.*?)\]");
 		
-		public int RealRooms(params string[] rooms)
+		public int SectorIdSumForRealRooms(params string[] rooms)
 		{
 			var result = 0;
 			foreach (var room in rooms)
@@ -18,39 +18,27 @@ namespace AdventOfCOde
 				var encryption = matches.Groups[1].Value;
 				var sectorId = int.Parse(matches.Groups[2].Value);
 				var checksum = matches.Groups[3].Value;
-
-				var groups = (from l in encryption.ToCharArray()
-						   group l by l into g
-						   where g.Key != '-'
-						   orderby g.Count() descending
-						   select g).ToArray();
-				var ties = (from g in groups
-							group g by g.Count() into t
-							select t)
-							.ToArray();
-
+				
+				var letterGroups = encryption
+					.ToCharArray()
+					.Where(l => l != '-')
+					.GroupBy(l => l)
+					.OrderByDescending(g => g.Count())
+					.ThenBy(g => g.Key)
+					.ToArray();
+				
 				var valid = false;
 				for (var i = 0; i < 5; i++)
 				{
-					var next = groups.SafeNext(i);
-					var tie = groups[i].Count() == next?.Count();
-					if (tie)
+					if(letterGroups[i].Key != checksum[i])
 					{
-						var nextLetter = ties[i].Key + 1;
-						if (checksum.SafeNext(i) != 
-					}
-					if (checksum[i] != groups[i].Key)
-					{
+						valid = false;
 						break;
-					}					
+					}
 					valid = true;
 				}
-				for (var i = 0; i < 5; i++)
-				{
-					
-				}
-
 				result = valid ? result + sectorId : result;
+
 			}
 			return result;
 		}
