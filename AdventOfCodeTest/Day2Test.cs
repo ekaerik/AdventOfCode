@@ -1,14 +1,21 @@
 ﻿using AdventOfCOde;
 using FluentAssertions;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace AdventOfCodeTest
 {
 	public class Day2Test
 	{
+		ITestOutputHelper output;
+
+		public Day2Test(ITestOutputHelper output)
+		{
+			this.output = output;
+		}
+
 		[Fact]
 		public void Should1()
 		{
@@ -58,8 +65,8 @@ namespace AdventOfCodeTest
 			var key4 = new Day2().Calculate(input4);
 			var key5 = new Day2().Calculate(input5);
 
-			Console.WriteLine($"{key1}{key2}{key3}{key4}{key5}");
-
+			output.WriteLine($"{key1}{key2}{key3}{key4}{key5}");
+			
 			var result = $"{key1}{key2}{key3}{key4}{key5}".Should().Be("53255");
 		}
 

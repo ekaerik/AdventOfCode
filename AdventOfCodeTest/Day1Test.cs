@@ -2,11 +2,19 @@
 using FluentAssertions;
 using System;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace AdventOfCodeTest
 {
 	public class Day1Test
 	{
+		ITestOutputHelper output;
+
+		public Day1Test(ITestOutputHelper output)
+		{
+			this.output = output;
+		}
+
 		[Fact]
 		public void ShouldCalculate1()
 		{
@@ -52,7 +60,7 @@ namespace AdventOfCodeTest
 
 			var result = day1.Calculate(input);
 
-			Console.WriteLine(result.Blocks);
+			output.WriteLine($"{result.Blocks}");
 
 			result.Blocks.Should().Be(236);
 		}

@@ -2,6 +2,7 @@
 using FluentAssertions;
 using System;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace AdventOfCodeTest
 {
@@ -97,6 +98,13 @@ namespace AdventOfCodeTest
 	
 	public class Day4Test
 	{
+		ITestOutputHelper output;
+
+		public Day4Test(ITestOutputHelper output)
+		{
+			this.output = output;
+		}
+
 		[Fact]
 		public void Should1()
 		{
@@ -134,7 +142,7 @@ namespace AdventOfCodeTest
 		{
 			var result = new Day4().SectorIdSumForRealRooms(input);
 
-			Console.WriteLine(result);
+			output.WriteLine($"{result}");
 
 			result.Should().Be(185371);
 		}

@@ -1,12 +1,19 @@
 ﻿using AdventOfCOde;
 using FluentAssertions;
-using System;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace AdventOfCodeTest
 {
 	public class Day3Test
 	{
+		ITestOutputHelper output;
+
+		public Day3Test(ITestOutputHelper output)
+		{
+			this.output = output;
+		}
+
 		[Fact]
 		public void Should1()
 		{
@@ -29,7 +36,7 @@ namespace AdventOfCodeTest
 		{
 			var result = new Day3().NumberOfTriangles(input);
 
-			Console.WriteLine(result);
+			output.WriteLine($"{result}");
 
 			result.Should().Be(869);
 		}
