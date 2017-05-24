@@ -1,14 +1,13 @@
 ﻿using AdventOfCOde;
 using FluentAssertions;
-using NUnit.Framework;
 using System;
+using Xunit;
 
 namespace AdventOfCodeTest
 {
-	[TestFixture]
 	public class Day4TestBackToBasicsTest
 	{
-		[Test]
+		[Fact]
 		public void ShouldBeValidForRepeatedLetters()
 		{
 			var input = "x-aa-eeee-zzz-bbbbb-1[bezax]";
@@ -18,7 +17,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(1);
 		}
 
-		[Test]
+		[Fact]
 		public void ShouldBeValidForTies()
 		{
 			var input = "a-b-c-d-e-1[abcde]";
@@ -28,7 +27,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(1);
 		}
 
-		[Test]
+		[Fact]
 		public void ShouldBeValidForTies_WithUnorderedEncryption()
 		{
 			var input = "e-d-c-a-b-1[abcde]";
@@ -38,7 +37,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(1);
 		}
 
-		[Test]
+		[Fact]
 		public void ShouldBeInvalidForRepeatedLetters_WithUnmatchingChecksum()
 		{
 			var input = "x-aa-eeee-zzz-bbbbb-1[xazbe]";
@@ -48,7 +47,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(0);
 		}
 
-		[Test]
+		[Fact]
 		public void ShouldBeInvalidForTies_WithUnorderedEncryption()
 		{
 			var input = "e-d-c-a-b-1[abced]";
@@ -58,7 +57,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(0);
 		}
 
-		[Test]
+		[Fact]
 		public void ShouldBeValidForBothRepeatedAndAlphabeticalTies()
 		{
 			var input = "z-y-x-aaaa-bbb-1[abxyz]";
@@ -68,7 +67,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(1);
 		}
 
-		[Test]
+		[Fact]
 		public void ShouldBeValidForBothRepeatedTies()
 		{
 			var input = "z-yy-xxx-aaaa-bbb-1[abxyz]";
@@ -77,8 +76,8 @@ namespace AdventOfCodeTest
 
 			result.Should().Be(1);
 		}
-		
-		[Test]
+
+		[Fact]
 		public void ShouldCheckAlphabeticalInTie()
 		{
 			var result = new Day4().SectorIdSumForRealRooms("b-a-c-e-d-f-g-h-987[abcde]");
@@ -86,7 +85,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(987);
 		}
 
-		[Test]
+		[Fact]
 		public void ShouldCheckCountAndTie()
 		{
 			var result = new Day4().SectorIdSumForRealRooms("aaa-z-b-111[abc]");
@@ -95,11 +94,10 @@ namespace AdventOfCodeTest
 		}
 
 	}
-
-	[TestFixture]
+	
 	public class Day4Test
 	{
-		[Test]
+		[Fact]
 		public void Should1()
 		{
 			var result = new Day4().SectorIdSumForRealRooms("aaaaa-bbb-z-y-x-123[abxyz]");
@@ -107,7 +105,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(123);
 		}
 
-		[Test]
+		[Fact]
 		public void Should2()
 		{
 			var result = new Day4().SectorIdSumForRealRooms("a-b-c-d-e-f-g-h-987[abcde]");
@@ -115,7 +113,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(987);
 		}
 
-		[Test]
+		[Fact]
 		public void Should3()
 		{
 			var result = new Day4().SectorIdSumForRealRooms("not-a-real-room-404[oarel]");
@@ -123,7 +121,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(404);
 		}
 
-		[Test]
+		[Fact]
 		public void Should4()
 		{
 			var result = new Day4().SectorIdSumForRealRooms("totally-real-room-200[decoy]");
@@ -131,7 +129,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(0);
 		}
 
-		[Test]
+		[Fact]
 		public void ShouldSolve()
 		{
 			var result = new Day4().SectorIdSumForRealRooms(input);

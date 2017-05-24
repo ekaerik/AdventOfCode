@@ -1,14 +1,13 @@
 ﻿using AdventOfCOde;
 using FluentAssertions;
-using NUnit.Framework;
 using System;
+using Xunit;
 
 namespace AdventOfCodeTest
 {
-	[TestFixture]
 	public class Day3Test
 	{
-		[Test]
+		[Fact]
 		public void Should1()
 		{
 			var result = new Day3().NumberOfTriangles(new[] { new[] { 5, 10, 25 } });
@@ -16,7 +15,7 @@ namespace AdventOfCodeTest
 			result.Should().Be(0);
 		}
 
-		[Test]
+		[Fact]
 		public void Should2()
 		{
 			var result = new Day3().NumberOfTriangles(new[] { new[] { 9, 3, 10 } });
@@ -25,7 +24,7 @@ namespace AdventOfCodeTest
 		}
 
 
-		[Test]
+		[Fact]
 		public void ShouldSolve()
 		{
 			var result = new Day3().NumberOfTriangles(input);

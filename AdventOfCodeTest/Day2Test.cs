@@ -1,16 +1,15 @@
 ﻿using AdventOfCOde;
 using FluentAssertions;
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Xunit;
 
 namespace AdventOfCodeTest
 {
-	[TestFixture]
 	public class Day2Test
 	{
-		[Test]
+		[Fact]
 		public void Should1()
 		{
 			var key = new Day2().Calculate("ULL".ToStringArray());
@@ -18,7 +17,7 @@ namespace AdventOfCodeTest
 			key.Should().Be(1);
 		}
 
-		[Test]
+		[Fact]
 		public void Should2()
 		{
 			var key = new Day2().Calculate("RRDDD".ToStringArray(), 0, 0);
@@ -26,7 +25,7 @@ namespace AdventOfCodeTest
 			key.Should().Be(9);
 		}
 
-		[Test]
+		[Fact]
 		public void Should3()
 		{
 			var key = new Day2().Calculate("LURDL".ToStringArray(), 2, 2);
@@ -34,7 +33,7 @@ namespace AdventOfCodeTest
 			key.Should().Be(8);
 		}
 
-		[Test]
+		[Fact]
 		public void Should4()
 		{
 			var key = new Day2().Calculate("UUUUD".ToStringArray(), 1, 2);
@@ -44,7 +43,7 @@ namespace AdventOfCodeTest
 
 
 
-		[Test]
+		[Fact]
 		public void ShouldSolve()
 		{
 			var input1 = "LRULLRLDUUUDUDDDRLUDRDLDDLUUDLDDLRDRLDRLLURRULURLDRLDUDURLURRULLDDDUDDRRRDLRRDDLDURDULLRDLLLDRDLLDULDUDLLDLDRUDLLDLDDRRRDRLUDRDDLUDRRDUDUDLLDDUUDLRDUDRRUDUDRULRULUDRUUDLDLULLRLDLDDRULLRLLLULUULDURURLUUULDURLDDDURRUUDURDDDULDLURLRDRURDRUDRLLDLDRUURLLLRDRURUDLRLUDULLDDURLRURDLRDUUURRLULRRLDDULUUURLRRRLLLLLURDDRUULUDRRRUDDLLULRRUULDRDDULRLDDDRRUULUDRLRUDURUUULDLDULUUDURLLLRRDDRDLURDDDLDDDLRDRLDDURLRLLRUDRRLLDDDDDURDURRDDULDULLRULDRUURDRRDUDDUDDDDRRDULDUURDRUDRLDULRULURLLRRDRDRDLUUDRRLRLDULDDLUUUUUURRLRRRULLDDDRLRDRRRRRRRDUUDLLUDURUDDLURRUDL".ToStringArray();
@@ -64,59 +63,58 @@ namespace AdventOfCodeTest
 			var result = $"{key1}{key2}{key3}{key4}{key5}".Should().Be("53255");
 		}
 
-		[TestFixture]
 		public class Day2BackToBasicsTest
 		{
-			[Test]
+			[Fact]
 			public void ShouldUp()
 			{
 				new Day2().Calculate("U".ToStringArray()).Should().Be(2);
 			}
 
-			[Test]
+			[Fact]
 			public void ShouldRight()
 			{
 				new Day2().Calculate("R".ToStringArray()).Should().Be(6);
 			}
 
-			[Test]
+			[Fact]
 			public void ShouldDown()
 			{
 				new Day2().Calculate("D".ToStringArray()).Should().Be(8);
 			}
 
 
-			[Test]
+			[Fact]
 			public void ShouldLeft()
 			{
 				new Day2().Calculate("L".ToStringArray()).Should().Be(4);
 			}
 
-			[Test]
+			[Fact]
 			public void ShouldUp2()
 			{
 				new Day2().Calculate("UU".ToStringArray()).Should().Be(2);
 			}
 
-			[Test]
+			[Fact]
 			public void ShouldRight2()
 			{
 				new Day2().Calculate("RR".ToStringArray()).Should().Be(6);
 			}
 
-			[Test]
+			[Fact]
 			public void ShouldDown2()
 			{
 				new Day2().Calculate("DD".ToStringArray()).Should().Be(8);
 			}
 
-			[Test]
+			[Fact]
 			public void ShouldLeft2()
 			{
 				new Day2().Calculate("LL".ToStringArray()).Should().Be(4);
 			}
 
-			[Test]
+			[Fact]
 			public void ShouldTraverse()
 			{
 				new Day2().Calculate("UULLDDDDDRRLU".ToStringArray()).Should().Be(5);
