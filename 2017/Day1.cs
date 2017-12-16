@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace _2017
-{
+{    
     public class Day1
     {
         public int Calculate(string input)
