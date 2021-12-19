@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace _2021
+﻿namespace _2021
 {
     public class Day4
     {

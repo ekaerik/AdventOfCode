@@ -53,6 +53,9 @@
                 remaining = remaining.Where(x => x[i] == carry).ToArray();
             }
 
+            if (remaining.Count() > 1)
+                return null;
+
             return new string(remaining.Single());
         }
 
