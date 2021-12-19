@@ -5,14 +5,10 @@ using Xunit.Abstractions;
 
 namespace _2021Test
 {
-    public class Day1Test
-    {
-        private readonly ITestOutputHelper output;
 
-        public Day1Test(ITestOutputHelper output)
-        {
-            this.output = output;
-        }
+    public class Day1Test : AdventOfCodeTest
+    {
+        public Day1Test(ITestOutputHelper output) : base(output) { }
 
         public class Part1 : Day1Test
         {
@@ -110,7 +106,7 @@ namespace _2021Test
                 var result = target.Execute2(input);
 
                 output.WriteLine(result.ToString());
-            }    
+            }
         }
 
 

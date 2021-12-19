@@ -1,5 +1,6 @@
 ﻿namespace _2021
 {
+
     public class Day1
     {
         public int Execute(int[] input)
