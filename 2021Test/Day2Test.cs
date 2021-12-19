@@ -5,6 +5,7 @@ using Xunit.Abstractions;
 
 namespace _2021Test
 {
+
     public class Day2Test : AdventOfCodeTest
     {
         public Day2Test(ITestOutputHelper output) : base(output) { }
@@ -75,9 +76,9 @@ namespace _2021Test
             [Fact]
             public void Should_calculate_depth_with_aim()
             {
-                var input = new[] { 
-                    "forward 5", 
-                    "down 5", 
+                var input = new[] {
+                    "forward 5",
+                    "down 5",
                     "forward 8",
                     "up 3",
                     "down 8",
