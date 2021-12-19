@@ -22,8 +22,7 @@ namespace _2018
 				}
 			}
 			return sum;
-		}
-		
+		}		
 		
 	}
 }
