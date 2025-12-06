@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using Xunit.Abstractions;
+﻿using Xunit.Abstractions;
 
 namespace AdventOfCode.Day1;
 
